@@ -2,7 +2,7 @@ import { useInput } from '@/hooks/useInput';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
+import { BottomTabInset, MaxContentWidth, Spacing, Typography } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 import { useGemini } from '@/hooks/useGemini';
 import { extractGeminiResponseText } from '@/utils/helper';
@@ -35,7 +35,7 @@ const ChatScreen = () => {
           style={styles.button}
           disabled={isLoading}
         >
-          <Text style={styles.text}>Enter</Text>
+          <Text style={styles.buttonText}>Enter</Text>
         </Pressable>
         <View>
           {isLoading && <Text style={styles.text}>Loading...</Text>}
@@ -57,19 +57,19 @@ const useStyles = () => {
     marginTop: Spacing.five,
   },
   input: {
+    ...Typography.bodyLg,
     width: 200,
     height: 30,
-    borderColor: theme.border,
+    borderColor: theme.outlineVariant,
     borderWidth: 1,
-    color: theme.text,
+    color: theme.onSurface,
   },
   button: {
     maxHeight: 30,
     maxWidth: 150,
     padding: Spacing.two,
     flex: 1,
-    backgroundColor: theme.backgroundSelected,
-    color: theme.text,
+    backgroundColor: theme.primary,
   },
   safeArea: {
     flex: 1,
@@ -80,7 +80,12 @@ const useStyles = () => {
     maxWidth: MaxContentWidth,
   },
   text: {
-    color: theme.text,
+    ...Typography.bodyLg,
+    color: theme.onSurface,
+  },
+  buttonText: {
+    ...Typography.labelLg,
+    color: theme.onPrimary,
   }
   });
 };
